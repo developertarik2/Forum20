@@ -1,0 +1,62 @@
+﻿@model Forum20.Models.Post.NewPostModel
+
+<div class="container body-content">
+    <div class="row sectionHeader">
+        <div class="sectionHeading noBorder">
+            New Post | @Model.ForumName
+            <div class="forumLogo" style="background-image: url(@Model.ForumImageUrl); background-size:100%"></div>
+            <span id="headingBtn">
+                <a asp-controller="Forum"
+                   asp-action="Topic"
+                   asp-route-id="@Model.ForumId" class="btn btn-back">Back to @Model.ForumName</a>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="createPostSection">
+            <div class="authorBlock">
+                You're submitting this post as <span class="authorBlockName"><strong>@Model.AuthorName</strong> </span>
+            </div>
+            <form asp-action="Create" method="post" id="addPostForm" >
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Title"></label>
+                    <input asp-for="Title" id="titleText" class="form-control" />
+                      <span asp-validation-for="Title" id="title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Content">Post Content</label>
+                    <span asp-validation-for="Content" id="content" class="text-danger"></span>
+                    <textarea asp-for="Content" id="contentText" rows="20" class="form-control" placeholder="Write your post here."></textarea>
+
+                </div>
+                <button type="submit" id="registerBtn" class="btn btn-submitPost" onclick="return CheckForm()" >Submit Post</button>
+                @* <input asp-for="UserId" type="hidden" />
+        <input asp-for="ForumName" type="hidden" />*@
+                <input asp-for="ForumId" type="hidden" />
+            </form>
+        </div>
+    </div>
+
+</div>
+@* <h1> New Post | @Model.ForumName</h1>
+    <form asp-action="AddPost" method="post" id="addPostForm">
+        <div class="form-group">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Content"></label>
+            <textarea asp-for="Content" class="form-control"></textarea>
+        </div>
+
+        <button type="submit" id="submitPostBtn" class="btn btn-submitPost">
+            Submit Post
+        </button>
+        <input asp-for="ForumId" type="hidden" />
+    </form>
+*@
+
+<script>
+ 
+</script>

@@ -1,0 +1,4 @@
+add-migration "Add initial entity models"
+add-migration "Update ApplicationUser"
+
+Pa123$

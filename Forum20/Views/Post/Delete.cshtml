@@ -1,0 +1,42 @@
+﻿@model Forum20.Models.Post.DeletePostModel
+<div class="container body-content">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="row postHeader">
+            <div class="postHeading">
+                <span class="postIndexTitle">
+                    @Model.PostTitle
+                </span>
+                <span id="headingBtn">
+                    <a asp-controller="Post" asp-action="Index" asp-route-id="@Model.PostId" class="btn btn-back">Back to @Model.PostTitle</a>
+                </span>
+            </div>
+        </div>
+
+        <div class="sectionHeading">Delete Post</div>
+        <div class="row" id="postIndexContent">
+           
+            <div class="col-md-12 postContentContainer">
+                <div class="postContent">
+                    @Html.Raw(Model.PostContent)
+                </div>
+            </div>
+           
+            
+        </div>
+        <div class="sectionDescription">
+           
+            <p>
+                Are you sure you'd like to delete this post?
+            </p>
+        </div>
+
+        <div class="deletePost">
+            <form asp-action="Delete" method="post" id="addPostForm">
+               @*<a asp-controller="Post" asp-action="Delete" asp-route-id="@Model.PostId" class="btn btn-lg btn-danger">Confirm Delete</a>*@
+                <button id="deleteButton" type="submit" class="btn btn-lg btn-danger">Confirm Delete</button>
+                <a asp-controller="Post" asp-action="Index" asp-route-id="@Model.PostId" class="btn btn-lg btn-default">Cancel</a>
+            </form>
+        </div>
+    }
+</div>

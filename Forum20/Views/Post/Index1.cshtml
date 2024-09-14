@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@model Forum20.Models.Home.HomeIndexModel
+
+
+
+<table id="example" class="display table table-bordered" style="background-color:white ;width:100%" cellspacing="0" >
+    <thead>
+        <tr>
+           
+            <th>Content</th>
+
+        </tr>
+    </thead>
+    <tbody>
+          @foreach (var post in Model.LatestPosts)
+        {
+            <tr>
+                
+                
+                <td><div class="row" id="postIndexContent">
+    <div class="col-md-3 postAuthorContainer">
+        <div class="postAuthorImage" style="background-image: url(@post.Forum.ImageUrl); background-size: 100%;">
+
+        </div>
+        
+        <span class="postData">@post.DatePosted</span>
+        
+    </div>
+    <div class="col-md-9 postContentContainer">
+        <div class="postContent">
+            @Html.Raw(post.Title)
+        </div>
+    </div>
+   
+    
+</div></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+<script>
+   
+
+           /* "ajax": {
+
+                "url": "/Post/GetPost/",
+                "type": "GET",
+                "datatype": "json"
+            },
+            "columns": [
+                { "data": "Title" },
+                { "data": "Content" }
+                /* { "data": "City" },
+                 { "data": "Country" },
+                 { "data": "Phone" }*/
+
+           // ]
+
+            /*
+                "data": [
+                    {
+                        "Title": "Tiger Nixon",
+                        "Content": "System Architect",
+
+                    }
+                ]*/
+
+
+</script>  

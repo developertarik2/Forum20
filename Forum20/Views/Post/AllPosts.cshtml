@@ -1,0 +1,57 @@
+﻿@*@model Forum20.Models.Home.HomeIndexModel*@
+@model ReflectionIT.Mvc.Paging.PagingList<Forum20.Data.Models.Post>
+@using ReflectionIT.Mvc.Paging
+@addTagHelper*,ReflectionIT.Mvc.Paging
+    <div class="container body-content">
+        <div class="row frontPageContent">
+            <h3 id="latestPosts">Latest Posts</h3>
+            <nav aria-label="Suppliers navigation example">
+                @await this.Component.InvokeAsync("Pager", new { pagingList = this.Model })
+            </nav>
+            
+            <table class="table table-hover" id="latestPostsTable" cellspacing="0">
+                <tbody>
+                    @foreach (var post in Model)
+                    {
+                        <tr>
+                            <td>
+                                @*  <div class="forumLogo" style="background-image: url(@post.Forum.ImageUrl);"></div>*@
+                                <div class="postTitle">
+                                    <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">
+                                        @post.Title
+                                    </a>
+                                </div>
+                                @*  <div class="postSubTitle">
+            @if (@post.Replies.Count() == 1)
+            {
+                <span>@post.Replies.Count() Reply</span>
+            }
+            @if (@post.Replies.Count() == 0)
+            {
+                <span>No Replies</span>
+            }
+            else
+            {
+                <span>@post.Replies.Count() Replies</span>
+            }
+            | <span class="postUser">
+                <a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.User.Id">
+                    @post.User.UserName
+                </a>
+            </span>
+        </div>*@
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+             <nav aria-label="Suppliers navigation example">
+            <vc:pager paging-list="@Model" />
+        </nav>
+        </div>
+    </div>
+
+   
+
+    
